@@ -11,9 +11,30 @@ function playRound(playerSelection,compueterSelection) {
     if (playerSelection === paper && compueterSelection === rock) return "You win!";
     if (playerSelection === rock && compueterSelection === paper) return "You lose";
     if (playerSelection === scissors && compueterSelection === rock) return "You lose";  
-    if (playerSelection === paper && compueterSelection === scissors) return "You lose";    
+    if (playerSelection === paper && compueterSelection === scissors) return "You lose";
+    if (playerSelection === compueterSelection) return "tie";   
 }
 
 function game() {
+    let playerWins = 0;
+    let computerWins = 0;
+    let gamesPlayed = 0;
+
+    while(gamesPlayed < 5) {
+        let move = window.prompt("Chose move");
+        let result = playRound(move,"scissors");
+        
+        if(result === "You win!") {
+            playerWins++;
+            console.log("You win!")
+        }else {
+            computerWins++;
+            console.log("You lose");
+        }
+
+        gamesPlayed++;
+    }
+
     
+
 }
