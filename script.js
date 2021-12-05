@@ -28,7 +28,7 @@ function game() {
 
     while(gamesPlayed < 5) {
         let move = window.prompt("Chose move");
-        let result = playRound(move,"scissors");
+        let result = playRound(move,computerPlay());
         
         if(result === "You win!") {
             playerWins++;
