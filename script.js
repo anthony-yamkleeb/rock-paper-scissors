@@ -1,3 +1,9 @@
+function computerPlay() {
+    let moves = ["rock","paper","scissors"];
+    let pickedMove = moves[Math.floor(Math.random()*moves.length)];
+    return pickedMove;
+}
+
 function playRound(playerSelection,compueterSelection) {
     playerSelection = playerSelection.toLowerCase();
     compueterSelection = compueterSelection.toLowerCase();
@@ -35,6 +41,10 @@ function game() {
         gamesPlayed++;
     }
 
-    
+    if (playerWins >= 3) {
+        console.log("Won majority of 5 games, you win");
+    }else{
+        console.log("lost majority of 5 games, you lose");
+    }
 
 }
