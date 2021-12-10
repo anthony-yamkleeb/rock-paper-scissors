@@ -21,30 +21,4 @@ function playRound(playerSelection,compueterSelection) {
     if (playerSelection === compueterSelection) return "tie";   
 }
 
-function game() {
-    let playerWins = 0;
-    let computerWins = 0;
-    let gamesPlayed = 0;
 
-    while(gamesPlayed < 5) {
-        let move = window.prompt("Chose move");
-        let result = playRound(move,computerPlay());
-        
-        if(result === "You win!") {
-            playerWins++;
-            console.log("You win!")
-        }else {
-            computerWins++;
-            console.log("You lose");
-        }
-
-        gamesPlayed++;
-    }
-
-    if (playerWins >= 3) {
-        console.log("Won majority of 5 games, you win");
-    }else{
-        console.log("lost majority of 5 games, you lose");
-    }
-
-}
