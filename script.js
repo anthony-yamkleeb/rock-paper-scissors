@@ -21,4 +21,15 @@ function playRound(playerSelection,compueterSelection) {
     if (playerSelection === compueterSelection) return "tie";   
 }
 
+const rock = document.createElement("button");
+const paper = document.createElement("button");
+const scissors = document.createElement("button");
+
+const buttons = document.getElementById("buttons");
+rock.textContent = "rock";
+paper.textContent = "paper";
+scissors.textContent = "scissors";
+buttons.appendChild(rock);
+buttons.appendChild(paper);
+buttons.appendChild(scissors);
 
