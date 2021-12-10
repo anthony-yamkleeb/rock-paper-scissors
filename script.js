@@ -9,8 +9,6 @@ function computerPlay() {
 function playRound(playerSelection,compueterSelection) {
     playerSelection = playerSelection.toLowerCase();
     compueterSelection = compueterSelection.toLowerCase();
-    console.log(playerSelection);
-    console.log(compueterSelection);
     
     const rock = "rock";               // const are to hold the avalable
     const paper = "paper";             // moves that can be done.
@@ -40,10 +38,6 @@ scissors.textContent = "scissors";
 buttons.appendChild(rock);
 buttons.appendChild(paper);
 buttons.appendChild(scissors);
-
-
-
-
 
 rock.addEventListener('click',() => {playRound("rock",computerPlay())});
 paper.addEventListener('click',() => {playRound("paper",computerPlay())});
