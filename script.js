@@ -40,16 +40,17 @@ function game() {
     buttons.appendChild(paper);
     buttons.appendChild(scissors);
 
-   
-    let matches = 0;
     const result = document.createElement("div");
     const body = document.querySelector("body");
     const script = document.querySelector("script");
     body.insertBefore(result,script);
 
     rock.addEventListener('click',() => {
-            const result = playRound("rock",computerPlay())
+            const gameResult = playRound("rock",computerPlay())
+            result.textContent = gameResult;
             
+            if (result === "You")
+
 
     });
     paper.addEventListener('click',() => {playRound("paper",computerPlay())});
@@ -60,6 +61,27 @@ function game() {
     }
     
 }
+
+function scoreboard() {
+    let matches = 0;
+    let wins = 0;
+    let losses = 0;
+
+    if (matches === 5) {
+        matches = 0;
+        if (wins > 3) {
+            wins = 0;
+            losses = 0;
+            return "You won majority of 5 matches";
+        }else {
+            wins = 0;
+            losses = 0;
+            return "You lost majoiry of 5 matches";
+        }
+    }
+}
+
+
 
 
 
