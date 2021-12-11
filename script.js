@@ -45,46 +45,92 @@ function game() {
     const script = document.querySelector("script");
     body.insertBefore(result, script);
 
-
-
-    rock.addEventListener('click', () => {
-        const gameResult = playRound("rock", computerPlay())
-        score(gameResult);
-        result.textContent = gameResult
-
-        if (score !== "") {
-            result.textContent = gameResult;
-        } else {
-            result.textContent = score;
-        }
-
-    });
-    paper.addEventListener('click', () => { playRound("paper", computerPlay()) });
-    scissors.addEventListener('click', () => { playRound("scissors", computerPlay()) });
-}
-
-let score = function (result) {
     let matches = 0;
     let wins = 0;
     let losses = 0;
 
-    if (matches === 5) {
-        matches = 0;
-        let gameEnd = ""
-        if (wins > 3) gameEnd = "You won majority of 5 matches";
-        if (losses > 3) gameEnd = "You lost majoiry of 5 matches";
-        if (wins === losses) gameEnd = "Tie";
+    rock.addEventListener('click', () => {
+        const gameResult = playRound("rock", computerPlay())
+        matches++;
+        if (gameResult === "You win!") wins++;
+        if (gameResult === "You lose") losses++;
 
-        wins = 0;
-        losses = 0;
+        result.textContent = gameResult;
+        console.log(matches);
+        if (matches === 5) {
+            matches = 0;
+            if (wins > 3) {
+                result.textContent = "Won manjority of 5 games";
+                wins = 0;
+                losses = 0;
 
-        return gameEnd;
-    }
+            } else if (losses > 3) {
+                result.textContent = "Lost majority of 5 games";
+                wins = 0;
+                losses = 0;
+            } else {
+                result.textContent = "No majority";
+                wins = 0;
+                losses = 0;
+            }
+        }
+    });
+    paper.addEventListener('click', () => {
+        playRound("paper", computerPlay())
+        const gameResult = playRound("rock", computerPlay())
+        matches++;
+        if (gameResult === "You win!") wins++;
+        if (gameResult === "You lose") losses++;
 
-    if (result === "You win!") wins++;
-    if (result === "You lose") losses++;
+        result.textContent = gameResult;
+        console.log(matches);
+        if (matches === 5) {
+            matches = 0;
+            if (wins > 3) {
+                result.textContent = "Won manjority of 5 games";
+                wins = 0;
+                losses = 0;
 
+            } else if (losses > 3) {
+                result.textContent = "Lost majority of 5 games";
+                wins = 0;
+                losses = 0;
+            } else {
+                result.textContent = "No majority";
+                wins = 0;
+                losses = 0;
+            }
+        }
+    });
+    scissors.addEventListener('click', () => {
+        playRound("scissors", computerPlay())
+        const gameResult = playRound("rock", computerPlay())
+        matches++;
+        if (gameResult === "You win!") wins++;
+        if (gameResult === "You lose") losses++;
+
+        result.textContent = gameResult;
+        console.log(matches);
+        if (matches === 5) {
+            matches = 0;
+            if (wins > 3) {
+                result.textContent = "Won manjority of 5 games";
+                wins = 0;
+                losses = 0;
+
+            } else if (losses > 3) {
+                result.textContent = "Lost majority of 5 games";
+                wins = 0;
+                losses = 0;
+            } else {
+                result.textContent = "No majority";
+                wins = 0;
+                losses = 0;
+            }
+        }
+    });
 }
+
 
 
 
