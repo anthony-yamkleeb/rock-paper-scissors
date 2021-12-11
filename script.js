@@ -15,32 +15,52 @@ function playRound(playerSelection,compueterSelection) {
     const scissors = "scissors";
     
 
-    if (playerSelection === rock && compueterSelection === scissors) return console.log("You win!");
-    if (playerSelection === rock && compueterSelection === paper) return console.log("You lose");
-    
-    if (playerSelection === paper && compueterSelection === rock) return console.log("You win!");
-    if (playerSelection === paper && compueterSelection === scissors) return console.log("You lose");
+    if (playerSelection === rock && compueterSelection === scissors) return "You win!";
+    if (playerSelection === rock && compueterSelection === paper) return "You lose";
 
-    if (playerSelection === scissors && compueterSelection === paper) return console.log("You win!");
-    if (playerSelection === scissors && compueterSelection === rock) return console.log("You lose");
+    if (playerSelection === paper && compueterSelection === rock) return "You win!";
+    if (playerSelection === paper && compueterSelection === scissors) return "You lose";
 
-    if (playerSelection === compueterSelection) return console.log("Tie");
+    if (playerSelection === scissors && compueterSelection === paper) return "You win!";
+    if (playerSelection === scissors && compueterSelection === rock) return "You lose";
+
+    if (playerSelection === compueterSelection) return "Tie";
 }
 
-const rock = document.createElement("button");
-const paper = document.createElement("button");
-const scissors = document.createElement("button");
+function game() {
+    const rock = document.createElement("button");
+    const paper = document.createElement("button");
+    const scissors = document.createElement("button");
+    rock.textContent = "rock";
+    paper.textContent = "paper";
+    scissors.textContent = "scissors";
 
-const buttons = document.getElementById("buttons");
-rock.textContent = "rock";
-paper.textContent = "paper";
-scissors.textContent = "scissors";
-buttons.appendChild(rock);
-buttons.appendChild(paper);
-buttons.appendChild(scissors);
+    const buttons = document.getElementById("buttons");
+    buttons.appendChild(rock);
+    buttons.appendChild(paper);
+    buttons.appendChild(scissors);
 
-rock.addEventListener('click',() => {playRound("rock",computerPlay())});
-paper.addEventListener('click',() => {playRound("paper",computerPlay())});
-scissors.addEventListener('click',() => {playRound("scissors",computerPlay())});
+   
+    let matches = 0;
+    const result = document.createElement("div");
+    const body = document.querySelector("body");
+    const script = document.querySelector("script");
+    body.insertBefore(result,script);
+
+    rock.addEventListener('click',() => {
+            const result = playRound("rock",computerPlay())
+            
+
+    });
+    paper.addEventListener('click',() => {playRound("paper",computerPlay())});
+    scissors.addEventListener('click',() => {playRound("scissors",computerPlay())});
+
+    if (matches === 5) {
+        
+    }
+    
+}
+
+
 
 
