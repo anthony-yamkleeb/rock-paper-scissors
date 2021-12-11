@@ -45,40 +45,45 @@ function game() {
     const script = document.querySelector("script");
     body.insertBefore(result,script);
 
+    let score = scoreboard();
+
     rock.addEventListener('click',() => {
             const gameResult = playRound("rock",computerPlay())
-            result.textContent = gameResult;
+            score(gameResult);
+            result.textContent = gameResult
             
-            if (result === "You")
-
+            if (score !== "" ) {
+                result.textContent = gameResult;
+            }else {
+                result.textContent = score;
+            }
 
     });
     paper.addEventListener('click',() => {playRound("paper",computerPlay())});
     scissors.addEventListener('click',() => {playRound("scissors",computerPlay())});
-
-    if (matches === 5) {
-        
-    }
-    
 }
 
-function scoreboard() {
+function scoreboard(result) {
     let matches = 0;
     let wins = 0;
     let losses = 0;
 
     if (matches === 5) {
         matches = 0;
-        if (wins > 3) {
-            wins = 0;
-            losses = 0;
-            return "You won majority of 5 matches";
-        }else {
-            wins = 0;
-            losses = 0;
-            return "You lost majoiry of 5 matches";
-        }
+        let gameEnd = ""
+        if (wins > 3) gameEnd ="You won majority of 5 matches";
+        if (losses > 3) gameEnd ="You lost majoiry of 5 matches";
+        if (wins === losses) gameEnd = "Tie";
+
+        wins = 0;
+        losses = 0;
+
+        return gameEnd;
     }
+
+    if (result === "You win!") wins++;
+    if (result === "You lose") losses++;
+
 }
 
 
