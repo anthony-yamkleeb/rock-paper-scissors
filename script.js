@@ -1,19 +1,19 @@
 function computerPlay() {
-    let moves = ["rock","paper","scissors"];
-    let pickedMove = moves[Math.floor(Math.random()*moves.length)];
+    let moves = ["rock", "paper", "scissors"];
+    let pickedMove = moves[Math.floor(Math.random() * moves.length)];
     result = pickedMove;
     return result;
-    
+
 }
 
-function playRound(playerSelection,compueterSelection) {
+function playRound(playerSelection, compueterSelection) {
     playerSelection = playerSelection.toLowerCase();
     compueterSelection = compueterSelection.toLowerCase();
-    
+
     const rock = "rock";               // const are to hold the avalable
     const paper = "paper";             // moves that can be done.
     const scissors = "scissors";
-    
+
 
     if (playerSelection === rock && compueterSelection === scissors) return "You win!";
     if (playerSelection === rock && compueterSelection === paper) return "You lose";
@@ -43,27 +43,27 @@ function game() {
     const result = document.createElement("div");
     const body = document.querySelector("body");
     const script = document.querySelector("script");
-    body.insertBefore(result,script);
+    body.insertBefore(result, script);
 
-    let score = scoreboard();
 
-    rock.addEventListener('click',() => {
-            const gameResult = playRound("rock",computerPlay())
-            score(gameResult);
-            result.textContent = gameResult
-            
-            if (score !== "" ) {
-                result.textContent = gameResult;
-            }else {
-                result.textContent = score;
-            }
+
+    rock.addEventListener('click', () => {
+        const gameResult = playRound("rock", computerPlay())
+        score(gameResult);
+        result.textContent = gameResult
+
+        if (score !== "") {
+            result.textContent = gameResult;
+        } else {
+            result.textContent = score;
+        }
 
     });
-    paper.addEventListener('click',() => {playRound("paper",computerPlay())});
-    scissors.addEventListener('click',() => {playRound("scissors",computerPlay())});
+    paper.addEventListener('click', () => { playRound("paper", computerPlay()) });
+    scissors.addEventListener('click', () => { playRound("scissors", computerPlay()) });
 }
 
-function scoreboard(result) {
+let score = function (result) {
     let matches = 0;
     let wins = 0;
     let losses = 0;
@@ -71,8 +71,8 @@ function scoreboard(result) {
     if (matches === 5) {
         matches = 0;
         let gameEnd = ""
-        if (wins > 3) gameEnd ="You won majority of 5 matches";
-        if (losses > 3) gameEnd ="You lost majoiry of 5 matches";
+        if (wins > 3) gameEnd = "You won majority of 5 matches";
+        if (losses > 3) gameEnd = "You lost majoiry of 5 matches";
         if (wins === losses) gameEnd = "Tie";
 
         wins = 0;
